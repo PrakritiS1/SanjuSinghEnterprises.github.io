@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanju Singh Enterprises - Electric Scooters & E-Rickshaws</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        .contact-header {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-header a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500"><rect fill="%232a5298" width="1200" height="500"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #1e3c72;
+        }
+
+        .btn-secondary:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Product Categories */
+        .categories {
+            padding: 60px 5%;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: #1e3c72;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+
+            display: flex;
+    flex-direction: column;
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /*.category-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }*/
+        .category-image {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;     /* 🔥 CHANGE */
+    background: #f7f7f7;     /* showroom feel */
+    padding: 10px;
+}
+
+
+        .category-info {
+            padding: 20px;
+            display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+        }
+.category-info .btn {
+    margin-top: auto;
+}
+        .category-info h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #1e3c72;
+        }
+
+        .category-info p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 15px;
+        }
+
+        .features {
+            list-style: none;
+            margin-bottom: 15px;
+        }
+
+        .features li {
+            padding: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .features li:before {
+            content: "✓ ";
+            color: #25D366;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        /* Gallery */
+        .gallery {
+            padding: 60px 5%;
+            background: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            height: 200px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 60px 5%;
+            background: #f9f9f9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .contact-card h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+        }
+
+        .contact-item strong {
+            min-width: 80px;
+        }
+
+        .map-container {
+            width: 100%;
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .inquiry-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .inquiry-form input,
+        .inquiry-form textarea,
+        .inquiry-form select {
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+        }
+
+        .inquiry-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            cursor: pointer;
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .section-title {
+                font-size: 24px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-header {
+                font-size: 12px;
+                gap: 10px;
+            }
+
+            .logo h1 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <h1>SANJU SINGH ENTERPRISES</h1>
+                <p>Authorized Dealer - Electric Vehicles</p>
+            </div>
+            <div class="contact-header">
+                <a href="tel:9534778938">📞 9534778938</a>
+                <a href="tel:7488718595">📞 7488718595</a>
+                <a href="https://wa.me/919534778938" class="whatsapp-btn">💬 WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Electric Scooters & E-Rickshaws in Bihar</h1>
+        <p>Go Green, Save Money - Best Deals on Electric Vehicles</p>
+        <div class="hero-buttons">
+            <a href="#products" class="btn btn-primary">View Products</a>
+            <a href="#contact" class="btn btn-secondary">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <div class="categories" id="products">
+        <h2 class="section-title">Our Electric Vehicles</h2>
+
+        <!-- E-Rickshaws -->
+        <div class="category-grid">
+            <div class="category-card" onclick="showInquiry('ZEOFINE E-Rickshaw - Passenger')">
+                <img src="R1.JPG" alt="ZEOFINE E-Rickshaw" class="category-image">
+
+                <div class="category-info">
+                    <h3>ZEOFINE E-Rickshaw - Passenger</h3>
+                    <p>Premium electric rickshaw with comfortable seating for passengers</p>
+                    <div class="price">₹ 1,25,000 - ₹ 1,50,000</div>
+                    <ul class="features">
+                        <li>4-6 Passenger Capacity</li>
+                        <li>Long Battery Life</li>
+                        <li>Comfortable Seating</li>
+                        <li>Weather Protection</li>
+                        <li>Low Maintenance</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('ZEOFINE E-Rickshaw - Passenger')">Inquire Now</button>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="showInquiry('ZEOFINE E-Rickshaw - Cargo')">
+                <img src="R2.jpeg" alt="ZEOFINE E-Rickshaw" class="category-image">
+
+                <div class="category-info">
+                    <h3>ZEOFINE E-Rickshaw - Cargo</h3>
+                    <p>Heavy-duty electric rickshaw for goods transportation</p>
+                    <div class="price">₹ 1,10,000 - ₹ 1,35,000</div>
+                    <ul class="features">
+                        <li>High Load Capacity</li>
+                        <li>Powerful Motor</li>
+                        <li>Durable Build</li>
+                        <li>Cost Effective</li>
+                        <li>Easy to Operate</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('ZEOFINE E-Rickshaw - Cargo')">Inquire Now</button>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="showInquiry('Blue E-Rickshaw')">
+                <img src="R3.JPG" alt="ZEOFINE E-Rickshaw" class="category-image">
+
+                    <h3>Blue E-Rickshaw - Passenger</h3>
+                    <p>Stylish and comfortable electric rickshaw</p>
+                    <div class="price">₹ 1,20,000 - ₹ 1,45,000</div>
+                    <ul class="features">
+                        <li>4-6 Passenger Seating</li>
+                        <li>Modern Design</li>
+                        <li>Efficient Battery</li>
+                        <li>Smooth Ride</li>
+                        <li>Affordable Price</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('Blue E-Rickshaw')">Inquire Now</button>
+                </div>
+            </div>
+
+            <!-- Electric Scooters -->
+            <div class="category-card" onclick="showInquiry('Magnus Neo Electric Scooter')">
+                <img src="s1.jpg" alt="Magnus Neo Electric Scooter" class="category-image">
+                <div class="category-info">
+                    <h3>Magnus Neo Electric Scooter</h3>
+                    <p>India's loved electric scooter with upgraded features</p>
+                    <div class="price">₹ 65,000 - ₹ 85,000</div>
+                    <ul class="features">
+                        <li>LFP Battery (Removable)</li>
+                        <li>75,000 km Warranty</li>
+                        <li>15p/km Running Cost</li>
+                        <li>Trust of 3L+ Families</li>
+                        <li>Low Maintenance</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('Magnus Neo Electric Scooter')">Inquire Now</button>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="showInquiry('Electric Scooter - White')">
+                <img src="s2.jpg" alt="Magnus Neo Electric Scooter" class="category-image">
+                <div class="category-info">
+                    <h3>Electric Scooter - White Edition</h3>
+                    <p>Stylish and efficient electric scooter for daily commute</p>
+                    <div class="price">₹ 55,000 - ₹ 75,000</div>
+                    <ul class="features">
+                        <li>Long Range Battery</li>
+                        <li>Stylish Design</li>
+                        <li>Easy Charging</li>
+                        <li>Affordable Price</li>
+                        <li>Perfect for City Ride</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('Electric Scooter - White')">Inquire Now</button>
+                </div>
+            </div>
+
+            <div class="category-card" onclick="showInquiry('PILOT E-Rickshaw')">
+<img src="s4.png" alt="PILOT E-Rickshaw - Premium" class="category-image">
+                <div class="category-info">
+                    <h3>PILOT E-Rickshaw - Premium</h3>
+                    <p>Premium electric rickshaw with modern features</p>
+                    <div class="price">₹ 1,35,000 - ₹ 1,65,000</div>
+                    <ul class="features">
+                        <li>Spacious Interior</li>
+                        <li>Premium Build Quality</li>
+                        <li>Advanced Features</li>
+                        <li>Comfortable Ride</li>
+                        <li>High Performance</li>
+                    </ul>
+                    <button class="btn btn-primary" onclick="showInquiry('PILOT E-Rickshaw')">Inquire Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="about">
+        <div class="about-content">
+            <h2>About Sanju Singh Enterprises</h2>
+            <p>We are authorized dealers of premium electric vehicles in Bihar. Located at HP Petrol Pump, Shambhuganj, Banka, we offer the best electric scooters and e-rickshaws at competitive prices.</p>
+            <p>With years of experience in the electric vehicle industry, we provide quality products, excellent after-sales service, and complete support for all your electric vehicle needs.</p>
+            <p><strong>Dealer:</strong> RAHUL KUMAR SINGH</p>
+        </div>
+    </div>
+
+    <!-- Gallery Section -->
+    <div class="gallery" id="gallery">
+        <h2 class="section-title">Our Showroom & Products</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="g1.png">
+            </div>
+            <div class="gallery-item">
+                 <img src="r4.png">
+            </div>
+            <div class="gallery-item">
+                <img src="r5.png">
+            </div>
+            <div class="gallery-item">
+                 <img src="s5.png">
+            </div>
+            <div class="gallery-item">
+                 <img src="i1.jpg">
+            </div>
+            <div class="gallery-item">
+                 <img src="s6.png">
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact" id="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <h3>Get In Touch</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>📍 Address:</strong>
+                        <span>HP PETROIL PUMP, Shambhuganj, 813211, Banka, Bihar</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📞 Phone:</strong>
+                        <div>
+                            <div><a href="tel:9534778938" style="color: #1e3c72;">9534778938</a></div>
+                            <div><a href="tel:7488718595" style="color: #1e3c72;">7488718595</a></div>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>📧 Email:</strong>
+                        <a href="mailto:rahul809243@gmail.com" style="color: #1e3c72;">rahul809243@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>👤 Dealer:</strong>
+                        <span>RAHUL KUMAR SINGH</span>
+                    </div>
+                    <div class="contact-item">
+                        <strong>🏢 Business:</strong>
+                        <span>SANJU SINGH ENTERPRISES</span>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps?q=HP+PETROIL+PUMP+SHAMBHUGANJ+BANKA+BIHAR+813211&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <div class="contact-card">
+                <h3>Send Inquiry</h3>
+                <form class="inquiry-form" onsubmit="submitInquiry(event)">
+                    <label>
+                        <input type="text" placeholder="Your Name *" required>
+                    </label>
+                    <input type="tel" placeholder="Phone Number *" required>
+                    <input type="email" placeholder="Email Address">
+                    <select required>
+                        <option value="">Select Vehicle Type *</option>
+                        <option>ZEOFINE E-Rickshaw - Passenger</option>
+                        <option>ZEOFINE E-Rickshaw - Cargo</option>
+                        <option>Blue E-Rickshaw</option>
+                        <option>Magnus Neo Electric Scooter</option>
+                        <option>Electric Scooter - White</option>
+                        <option>PILOT E-Rickshaw</option>
+                        <option>Other</option>
+                    </select>
+                    <textarea placeholder="Your Message / Requirements"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>
+                <h3>SANJU SINGH ENTERPRISES</h3>
+                <p>Authorized Dealer - Electric Vehicles</p>
+                <p>© 2025 All Rights Reserved</p>
+            </div>
+            <div class="social-links">
+                <a href="https://wa.me/919534778938" title="WhatsApp">💬</a>
+                <a href="tel:9534778938" title="Call">📞</a>
+                <a href="mailto:rahul809243@gmail.com" title="Email">📧</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919534778938?text=Hi%2C%20I%20am%20interested%20in%20electric%20vehicles" class="floating-whatsapp" title="Chat on WhatsApp">
+        💬
+    </a>
+
+    <!-- Modal -->
+    <div class="modal" id="inquiryModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">×</span>
+            <h2>Quick Inquiry</h2>
+            <form class="inquiry-form" onsubmit="submitModalInquiry(event)">
+                <input type="text" id="modalProduct" readonly>
+                <input type="text" placeholder="Your Name *" required>
+                <input type="tel" placeholder="Phone Number *" required>
+                <input type="email" placeholder="Email Address">
+                <textarea placeholder="Your Message / Requirements"></textarea>
+                <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Show inquiry modal
+        function showInquiry(product) {
+            document.getElementById('modalProduct').value = product;
+            document.getElementById('inquiryModal').style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('inquiryModal').style.display = 'none';
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('inquiryModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Submit inquiry
+        function submitInquiry(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you soon.\n\nFor immediate assistance:\nCall: 9534778938 / 7488718595\nWhatsApp: 9534778938');
+            e.target.reset();
+        }
+
+        function submitModalInquiry(e) {
+            e.preventDefault();
+            const product = document.getElementById('modalProduct').value;
+            alert(`Thank you for your interest in ${product}!\n\nWe will contact you soon.\n\nFor immediate assistance:\nCall: 9534778938 / 7488718595\nWhatsApp: 9534778938`);
+            closeModal();
+            e.target.reset();
+        }
+
+        // Animate on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.category-card, .contact-card').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
